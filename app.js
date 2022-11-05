@@ -32,33 +32,27 @@ const highAI = async (req, res) => {
 
 app.post("/", async (req, res) => {
   let result;
-  const { firstNumber, secondNumber, operation_type } = req.body;
+  const { x, y, operation_type } = req.body;
 
-  let x, y;
-  (x = firstNumber), (y = secondNumber), (Enum = operation_type);
+  Enum = operation_type;
   Enum: ["addition", "subtraction", "multiplication"];
   if (operation_type == "addition") {
-    result = parseInt(x) + parseInt(y);
-    answer = result.toString();
+    result = x + y;
     // console.log(typeof result);
   } else if (operation_type == "subtraction") {
-    result = parseInt(x) - parseInt(y);
-    answer = result.toString();
+    result = x - y;
   } else if (operation_type == "multiplication") {
-    result = parseInt(x) * parseInt(y);
-    answer = result.toString();
+    result = x * y;
   } else if (typeof operation_type === "string") {
     result = await highAI(operation_type);
-    answer = result.toString();
-
     // console.log(result);
   }
   res.json({
     slackUsername: "Henshaw",
-    result: parseInt(answer),
+    result: parseInt(result),
     operation_type: Enum.valueOf(operation_type),
   });
-  console.log(typeof result);
+  //console.log(typeof result);
 });
 
 // app.post("/api", async function (req, res) {
