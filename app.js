@@ -38,18 +38,18 @@ app.post("/", async (req, res) => {
   (x = firstNumber), (y = secondNumber), (Enum = operation_type);
   Enum: ["addition", "subtraction", "multiplication"];
   if (operation_type == "addition") {
-    result = parseInt(x) + parseInt(y);
+    result = x + y;
   } else if (operation_type == "subtraction") {
-    result = parseInt(x) - parseInt(y);
+    result = x - y;
   } else if (operation_type == "multiplication") {
-    result = parseInt(x) * parseInt(y);
+    result = x * y;
   } else if (typeof operation_type === "string") {
-    result = await highAI(operation_type);
-    console.log(result);
+    answer = await highAI(operation_type);
+    result = parseInt(answer);
   }
   res.json({
     slackUsername: "Henshaw",
-    result: result.toString(),
+    result: result,
     operation_type: Enum.valueOf(operation_type),
   });
   console.log(typeof result);
