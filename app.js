@@ -49,9 +49,10 @@ app.post("/", async (req, res) => {
   }
   res.json({
     slackUsername: "Henshaw",
-    result: result,
+    result: result.toString(),
     operation_type: Enum.valueOf(operation_type),
   });
+  console.log(typeof result);
 });
 
 // app.post("/api", async function (req, res) {
